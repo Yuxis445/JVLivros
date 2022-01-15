@@ -21,6 +21,7 @@ public class ScorePK implements Serializable {
 
     public ScorePK(){}
 
+
     public Livros getLivro() {
         return livro;
     }
