@@ -34,8 +34,8 @@ INSERT INTO tb_livro(score, count, title, image) VALUES (0, 0, 'The 7 habits of 
 INSERT INTO tb_livro(score, count, title, image) VALUES (0, 0, 'Why We Sleep', 'https://media.gatesnotes.com/-/media/Images/Books/Why-We-Sleep/EOYB_20191126_Book_WhyWeSleep_blogroll_800x494_v1.ashx');
 INSERT INTO tb_livro(score, count, title, image) VALUES (0, 0, 'Man Search for Meaning', 'https://www.highereducationdigest.com/wp-content/uploads/2019/02/IMG_20190209_105045_800x480.jpg');
 
-INSERT INTO tb_score(movie_id, user_id, value) VALUES (1, 1, 5.0);
-INSERT INTO tb_score(movie_id, user_id, value) VALUES (1, 2, 4.0);
-INSERT INTO tb_score(movie_id, user_id, value) VALUES (2, 1, 3.0);
-INSERT INTO tb_score(movie_id, user_id, value) VALUES (2, 2, 3.0);
-INSERT INTO tb_score(movie_id, user_id, value) VALUES (2, 3, 4.0);
+INSERT INTO tb_score(livro_id, user_id, value) VALUES (1, 1, 5.0);
+INSERT INTO tb_score(livro_id, user_id, value) VALUES (1, 2, 4.0);
+INSERT INTO tb_score(livro_id, user_id, value) VALUES (2, 1, 3.0);
+INSERT INTO tb_score(livro_id, user_id, value) VALUES (2, 2, 3.0);
+INSERT INTO tb_score(livro_id, user_id, value) VALUES (2, 3, 4.0);
