@@ -25,4 +25,13 @@ public class LivroService {
 
     }
 
+    @Transactional(readOnly = true)
+    public LivroDTO findById(Long id) {
+
+        Livros result = repository.findById(id).get();
+        LivroDTO dto = new LivroDTO(result);
+        return dto;
+
+    }
+
 }
