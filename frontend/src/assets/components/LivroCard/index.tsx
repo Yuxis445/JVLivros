@@ -13,7 +13,7 @@ function LivroCard( { livro } : Props) {
             <img className="dsmovie-movie-card-image" src={livro.image} alt={livro.title} />
             <div className="dsmovie-card-bottom-container">
                 <h3>{livro.title}</h3>
-                <LivroScore />
+                <LivroScore count={livro.count} score={livro.score}/>
                 
                 <Link to={`/form/${livro.id}`}>
                 
