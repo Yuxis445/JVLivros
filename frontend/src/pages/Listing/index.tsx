@@ -2,17 +2,29 @@ import LivroCard from "assets/components/LivroCard";
 import Pagination from "assets/components/Pagination";
 import axios from "axios";
 import { BASE_URL } from "utils/request";
+import { useEffect, useState } from "react"
+import { LivroPage } from "types/livro";
 
 function Listing() {
 
-    //forma errada
-    axios.get(`${BASE_URL}/livros`)
+    const [pageNumber, setPageNumber] = useState(0);
+    useEffect(() => {
+
+        axios.get(`${BASE_URL}/livros`)
         .then(response => {
-            console.log(response.data)
+            const data = response.data as LivroPage;
+            console.log(data);
+            setPageNumber(data.number);
         });
+
+    },[]);
+
+    
 
     return (
         <>
+
+            <p>{pageNumber}</p>
             <Pagination />
 
             <div className="container">
