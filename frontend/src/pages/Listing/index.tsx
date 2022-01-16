@@ -1,7 +1,15 @@
 import LivroCard from "assets/components/LivroCard";
 import Pagination from "assets/components/Pagination";
+import axios from "axios";
+import { BASE_URL } from "utils/request";
 
 function Listing() {
+
+    //forma errada
+    axios.get(`${BASE_URL}/livros`)
+        .then(response => {
+            console.log(response.data)
+        });
 
     return (
         <>
