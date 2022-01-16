@@ -18,11 +18,11 @@ function FormCard( {livroId}: Props ) {
     const [livro, setLivro] = useState<Livro>();
 
     useEffect(() => {
-        axios.get(`$BASE_URL/livros/${livroId}`)
+        axios.get(`${BASE_URL}/livros/${livroId}`)
             .then(response =>{
                 setLivro(response.data)
-            });
-    }, [livroId]);
+            })
+    }, [livroId])
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
 
