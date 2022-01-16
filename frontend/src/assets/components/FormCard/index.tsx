@@ -1,8 +1,10 @@
 import './style.css'
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Livro } from "types/livro";
 import { useEffect, useState } from 'react';
-import axios from 'axios';
+import axios, { AxiosRequestConfig } from 'axios';
+import { validateEmail } from 'utils/validate';
+import { BASE_URL } from 'utils/request';
 
 
 type Props = {
@@ -10,6 +12,8 @@ type Props = {
 }
 
 function FormCard( {livroId}: Props ) {
+
+    const navigate = useNavigate();
 
     const [livro, setLivro] = useState<Livro>();
 
@@ -20,13 +24,41 @@ function FormCard( {livroId}: Props ) {
             ));
     }, [livroId]);
 
+    const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+
+        event.preventDefault();
+
+        const email = (event.target as any).email.value;
+        const score = (event.target as any).score.value;
+
+        if (!validateEmail(email)){
+            return;
+        }
+
+        const config: AxiosRequestConfig = {
+            baseURL: BASE_URL,
+            method: 'PUT',
+            url: '/score',
+            data: {
+                email: email,
+                livroId: livroId,
+                score: score
+            }
+        }
+
+        axios(config).then(response => {
+            navigate("/");
+        });
+
+    }
+
     return (
 
         <div className="dsmovie-form-container">
             <img className="dsmovie-movie-card-image" src={livro?.image} alt={livro?.title} />
             <div className="dsmovie-card-bottom-container">
                 <h3>{livro?.title}</h3>
-                <form className="dsmovie-form">
+                <form className="dsmovie-form" onSubmit={handleSubmit}>
                     <div className="form-group dsmovie-form-group">
                         <label htmlFor="email">Informe seu email</label>
                         <input type="email" className="form-control" id="email" />
