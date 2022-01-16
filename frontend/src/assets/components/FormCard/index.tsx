@@ -1,4 +1,4 @@
-import './style.css'
+import './style.css';
 import { Link, useNavigate } from "react-router-dom";
 import { Livro } from "types/livro";
 import { useEffect, useState } from 'react';
@@ -19,9 +19,9 @@ function FormCard( {livroId}: Props ) {
 
     useEffect(() => {
         axios.get(`$BASE_URL/livros/${livroId}`)
-            .then(response =>(
+            .then(response =>{
                 setLivro(response.data)
-            ));
+            });
     }, [livroId]);
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
